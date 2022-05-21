@@ -36,10 +36,39 @@ npx create-react-app my-app
 ```
 This will create a self-contained react app in the my_app folder.
 
-3. Build the my_app react project
+3. Building the my_app react web app
+The app deployed using `create react app` uses webpack for packing the app for deployment.
+The app can be built using.
 ```bash
    cd icreact/my-app
    npm run build
+```
+
+However, we don't want to run the above command manually. Instead what `dfx
+deploy` to build the web app automatically before deploying the canister smart
+contract. For this we will have to initialize the dfx project with minimal npm scripting.
+
+Initialize the npm project.
+```bash
+cd icreact
+npm init
+ .... (Accept all defaults or edit)
+```
+
+Add a build script to the npm package.json
+ ```bash
+diff --git a/package.json b/package.json
+index e217090..daff373 100644
+--- a/package.json
++++ b/package.json
+@@ -4,6 +4,7 @@
+   "description": "Sample repository that creates a React web app and hosts it on the Internet Computer(IC).",
+   "main": "index.js",
+   "scripts": {
++    "build": "cd my-app; npm run build",
+     "test": "echo \"Error: no test specified\" && exit 1"
+   },
+   "repository": {
 ```
 
 4. Modify the dfx.json to pick up the web asset from the react web app.

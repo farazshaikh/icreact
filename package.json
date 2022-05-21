@@ -1,0 +1,20 @@
+{
+  "name": "icreact",
+  "version": "1.0.0",
+  "description": "Sample repository that creates a React web app and hosts it on the Internet Computer(IC).",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd my-app; npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farazshaikh/icreact.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/farazshaikh/icreact/issues"
+  },
+  "homepage": "https://github.com/farazshaikh/icreact#readme"
+}
