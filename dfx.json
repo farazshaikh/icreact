@@ -9,8 +9,11 @@
     },
     "icreact_assets": {
       "type": "assets",
+      "frontend": {
+	      "entrypoint": "my-app/build/index.html"
+      },
       "source": [
-        "src/icreact_assets/assets"
+        "my-app/build"
       ],
       "dependencies": [
         "icreact"

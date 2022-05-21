@@ -42,7 +42,8 @@ This will create a self-contained react app in the my_app folder.
 4. Modify the dfx.json to pick up the web asset from the my-app react project.
 Apply the following patch to your dfx.json
 ```bash
-  "finalcro_assets": {
+# git diff ./dfx.json
+"finalcro_assets": {
       "type": "assets",
       "frontend": {
 +	  "entrypoint": "my-app/build/index.html"
@@ -56,15 +57,28 @@ Apply the following patch to your dfx.json
       ]
     }
 ```
-Assets from the my-app/build folder will be uploaded to your canister smart contract.
+Assets from my-app/build folder will be uploaded to your canister smart contract.
 The `entrypoint` specifies the default asset to be returned for the `GET / HTTP` request.
 
 5. Deploy the canister
 ```bash
 cd icreact
-dfx create canister --all
+dfx start --background
+dfx canister create --all
 dfx build
 dfx deploy
 ```
 
 6. Access your react app from the dfx deployed local IC network.
+
+Deployed canisters.
+URLs:
+  Front-end:
+    icreact_assets: http://127.0.0.1:8000/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai
+
+
+7. Live Rendering/Debugging
+
+	You don't have to deploy your web app on the blockchain while developing.
+	Debug/develop your react native app using the create-react-app
+	tooling and then deploy the results on the blockchain.
