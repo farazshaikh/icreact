@@ -1,4 +1,72 @@
-# icreact
+# icreact create a React based project and host it on the IC.
+
+
+You want to create a React project and host it on the IC. 
+
+There are 2 ways to it.
+
+1. Convert the dfx generated asset web project into react project 
+OR 
+2. use https://create-react-app.dev/ to create React project and them embedd it into the asset canister.
+
+
+This example explores the latter i.e creating a React project from https://create-react-app.dev/ and embedding it into the dfx project.
+
+
+## Steps
+
+
+
+1. Create a dfx project with no frontend. This won't create any npm or webpack bootstrapping for your web contents. 
+All you will have is 2 canisters, a rust canister 'icreact' and assset canister 'icreact_asset'.
+
+```bash
+dfx new --no-frontend --type=rust icreact
+```
+
+2. Create a vanilla react project using create-react-app helper
+```bash
+cd icreact
+npx create-react-app my-app
+```
+This will create react app in the my_app folder.
+
+3. Change the source of the asset canister to point to the my-app build output in dfx.json.
+
+```bash
+  "finalcro_assets": {
+      "type": "assets",
+      "frontend": {
++	  "entrypoint": "my-app/build/index.html"
+      },
+      "source": [
+-         "dist"
++         "my-app/build"
+      ],
+      "dependencies": [
+        "finalcro"
+      ]
+    }
+```
+
+4. Build the my_app react project
+
+```bash
+   cd icreact/my-app
+   npm run build
+```
+
+5. Deploy the canister
+```bash
+cd icreact
+dfx create canister --all
+dfx build 
+dfx deploy
+```
+
+
+
+-------
 
 Welcome to your new icreact project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
 
@@ -35,3 +103,7 @@ dfx deploy
 ```
 
 Once the job completes, your application will be available at `http://localhost:8000?canisterId={asset_canister_id}`.
+
+
+ 
+
