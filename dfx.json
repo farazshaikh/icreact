@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "dfx": "0.10.0",
+  "canisters": {
+    "icreact": {
+      "type": "rust",
+      "package": "icreact",
+      "candid": "src/icreact/icreact.did"
+    },
+    "icreact_assets": {
+      "type": "assets",
+      "source": [
+        "src/icreact_assets/assets"
+      ],
+      "dependencies": [
+        "icreact"
+      ]
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "",
+      "args": ""
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  }
+}
