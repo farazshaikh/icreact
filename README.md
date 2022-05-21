@@ -17,9 +17,10 @@ This sample repository explores the former.
 
 ## Steps
 
-1. Create a dfx project with no frontend.  This will skip the default webpack
-and npm bootstrap code injected by `dfx new`.  Two canisters smart contracts are
-created, a RUST canister 'icreact' and an asset canister 'icreact_asset'.  The
+1. Create a dfx project with no frontend.
+
+This will skip the default webpack and npm bootstrap code injected by `dfx new`.
+Two canisters smart contracts are created, a RUST canister 'icreact' and an asset canister 'icreact_asset'.  The
 asset canister will not have any front end loaded into to. In the next steps, we
 will load the react web app as an asset into this asset smart contract.
 
@@ -28,7 +29,9 @@ You can use either RUST or Motoko for your back-end canister --type=[rust|motoko
 dfx new --no-frontend --type=rust icreact
 ```
 
+
 2. Create the vanilla react project using the create-react-app helper
+
 Details can be founder here: https://create-react-app.dev
 ```bash
 cd icreact
@@ -36,7 +39,9 @@ npx create-react-app my-app
 ```
 This will create a self-contained react app in the my_app folder.
 
+
 3. Building the my_app react web app
+
 The app deployed using `create react app` uses webpack for packing the app for deployment.
 The app can be built using.
 ```bash
@@ -71,7 +76,9 @@ index e217090..daff373 100644
    "repository": {
 ```
 
+
 4. Modify the dfx.json to pick up the web asset from the react web app.
+
 Apply the following patch to your dfx.json
 ```bash
 # git diff ./dfx.json
@@ -92,7 +99,9 @@ Apply the following patch to your dfx.json
 Assets from my-app/build folder will be uploaded to your canister smart contract.
 The `entrypoint` specifies the default asset to be returned for the `GET / HTTP` request.
 
+
 5. Deploy the canister
+
 ```bash
 cd icreact
 dfx start --background
@@ -100,6 +109,7 @@ dfx canister create --all
 dfx build
 dfx deploy
 ```
+
 
 6. Access your react app from the dfx deployed local IC network.
 
