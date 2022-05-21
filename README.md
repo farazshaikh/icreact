@@ -1,14 +1,14 @@
 # ICReact
 
-Sample project to create a React project and host it on the Internet Computer(IC).
+Sample repository that creates a React web app and hosts it on the Internet Computer(IC).
 
-Contents on this REPO are the results of steps described in the README.md If
-you following the README.md to create your new project DON'T checkout this repository.
-Instead, just follow the steps outlined in here.
+Contents in this repository are the results of steps described in the README.md If
+you are following the README.md to create a new project DON'T check out this repository.
+Instead, just follow the steps outlined here.
 
 
 ## A note
-There are 2 approaches for hosting a React app in a dfx project
+There are 2 approaches for hosting a React web app in a dfx project
 1. Embed a https://create-react-app.dev/ create react app in the dfx project.
 Or
 2. Convert the dfx generated web front-end into react project
@@ -17,10 +17,13 @@ This sample repository explores the former.
 
 ## Steps
 
-1. Create a dfx project with no frontend.
-This will skip the default `dfx new` webpack and npm bootstrap.
-Two canisters are created, a RUST canister 'icreact' and assset canister 'icreact_asset'.
+1. Create a dfx project with no frontend.  This will skip the default webpack
+and npm bootstrap code injected by `dfx new`.  Two canisters smart contracts are
+created, a RUST canister 'icreact' and an asset canister 'icreact_asset'.  The
+asset canister will not have any front end loaded into to. In the next steps, we
+will load the react web app as an asset into this asset smart contract.
 
+You can use either RUST or Motoko for your back-end canister --type=[rust|motoko].
 ```bash
 dfx new --no-frontend --type=rust icreact
 ```
@@ -39,7 +42,7 @@ This will create a self-contained react app in the my_app folder.
    npm run build
 ```
 
-4. Modify the dfx.json to pick up the web asset from the my-app react project.
+4. Modify the dfx.json to pick up the web asset from the react web app.
 Apply the following patch to your dfx.json
 ```bash
 # git diff ./dfx.json
