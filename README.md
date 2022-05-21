@@ -74,11 +74,12 @@ dfx deploy
 
 6. Access your react app from the dfx deployed local IC network.
 
+```
 Deployed canisters.
 URLs:
   Front-end:
     icreact_assets: http://127.0.0.1:8000/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai
-
+```
 
 7. Live Rendering/Debugging
 
